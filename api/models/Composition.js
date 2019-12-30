@@ -18,13 +18,14 @@ export default class Composition {
      * @param {number} created
      * @param {number} updated
      */
-    constructor(
-        id,
-        name,
-        startSpeed,
-        startNotes,
-        created,
-        updated) {
+    constructor({
+                    id,
+                    name,
+                    startSpeed,
+                    startNotes,
+                    created,
+                    updated
+                }) {
         this._id = id;
         this._name = name;
         this._startSpeed = startSpeed;

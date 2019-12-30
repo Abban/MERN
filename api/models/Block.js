@@ -15,13 +15,14 @@ export default class Block {
      * @param {number} created
      * @param {number} updated
      */
-    constructor(
-        id,
-        compositionId,
-        type,
-        blockData,
-        created,
-        updated) {
+    constructor({
+                    id,
+                    compositionId,
+                    type,
+                    blockData,
+                    created,
+                    updated
+                }) {
 
         this._id = id;
         this._compositionId = compositionId;
