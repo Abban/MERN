@@ -1,3 +1,5 @@
+import mongoose, { Schema } from 'mongoose';
+
 export default class Block {
     _id;
     _compositionId;
@@ -80,3 +82,12 @@ export default class Block {
         updated: this._updated,
     });
 }
+
+export const BlockSchema = new Schema({
+    type: String,
+    blockData: Object,
+    created: Number,
+    updated: Number
+});
+
+export const BlockModel = mongoose.model('Block', BlockSchema);

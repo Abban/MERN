@@ -1,3 +1,5 @@
+import mongoose, {Schema} from 'mongoose';
+
 export default class Composition {
 
     _id;
@@ -83,3 +85,13 @@ export default class Composition {
         updated: this._updated,
     });
 }
+
+export const CompositionSchema = new Schema({
+    name: String,
+    startSpeed: Number,
+    startNotes: Array,
+    created: Number,
+    updated: Number
+});
+
+export const CompositionModel = new mongoose.model('Composition', CompositionSchema);
