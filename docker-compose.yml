@@ -20,7 +20,8 @@ services:
     environment:
       - NODE_ENV=development
       - VIRTUAL_HOST=api.${VHOST}
-      - DB_HOST=db.${VHOST}
+      - DB_HOST=db
+      - DB_PORT=27017
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -48,7 +49,6 @@ services:
       - MONGO_INITDB_DATABASE=${DB_DATABASE}
       - MONGO_INITDB_ROOT_USERNAME=${DB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-      - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - VIRTUAL_HOST=db.${VHOST}

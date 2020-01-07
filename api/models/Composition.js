@@ -2,7 +2,6 @@ import mongoose, {Schema} from 'mongoose';
 
 export default class Composition {
 
-    _id;
     _name;
     _startSpeed;
     _startNotes;
@@ -13,7 +12,6 @@ export default class Composition {
     /**
      * Constructor
      *
-     * @param {string} id
      * @param {string} name
      * @param {number} startSpeed
      * @param {array} startNotes
@@ -21,26 +19,18 @@ export default class Composition {
      * @param {number} updated
      */
     constructor({
-                    id,
                     name,
                     startSpeed,
                     startNotes,
                     created,
                     updated
                 }) {
-        this._id = id;
         this._name = name;
         this._startSpeed = startSpeed;
         this._startNotes = startNotes;
         this._created = created;
         this._updated = updated;
     }
-
-
-    /**
-     * @returns {string}
-     */
-    getId = () => this._id;
 
 
     /**
@@ -74,10 +64,9 @@ export default class Composition {
 
 
     /**
-     * @returns {{startSpeed: string, startNotes: array, created: number, name: string, id: string, updated: number}}
+     * @returns {{startSpeed: string, startNotes: array, created: number, name: string, updated: number}}
      */
     getData = () => ({
-        id: this._id,
         name: this._name,
         startSpeed: this._startSpeed,
         startNotes: this._startNotes,

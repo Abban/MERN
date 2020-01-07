@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import logger from './middleware/logger';
 import authentication from "./middleware/authentication";
 import { CompositionModel } from "./models/Composition";
-import db from './db';
+require('./db');
 
 const app = express();
 app.use(bodyParser.json());

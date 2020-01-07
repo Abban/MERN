@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 export default class Block {
-    _id;
+
     _compositionId;
     _type;
     _blockData;
@@ -10,7 +10,6 @@ export default class Block {
 
 
     /**
-     * @param {string} id
      * @param {string} compositionId
      * @param {string} type
      * @param {object} blockData
@@ -18,26 +17,18 @@ export default class Block {
      * @param {number} updated
      */
     constructor({
-                    id,
                     compositionId,
                     type,
                     blockData,
                     created,
                     updated
                 }) {
-
-        this._id = id;
         this._compositionId = compositionId;
         this._type = type;
         this._blockData = blockData;
         this._created = created;
         this._updated = updated;
     }
-
-    /**
-     * @returns {string}
-     */
-    getId = () => this._id;
 
 
     /**
@@ -71,10 +62,9 @@ export default class Block {
 
     /**
      *
-     * @returns {{compositionId: string, created: number, id: string, type: string, updated: number, blockData: object}}
+     * @returns {{compositionId: string, created: number, type: string, updated: number, blockData: object}}
      */
     getData = () => ({
-        id: this._id,
         compositionId: this._compositionId,
         type: this._type,
         blockData: this._blockData,

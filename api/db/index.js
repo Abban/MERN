@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 
 const host = process.env.DB_HOST;
+const port = process.env.DB_PORT;
 const database = process.env.DB_DATABASE;
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
-console.log('mongodb://' + host + '/' + database);
+console.log('mongodb://' + host + ':' + port + '/' + database);
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://' + host + '/' + database, {
+mongoose.connect('mongodb://' + host + ':' + port + '/' + database, {
     useNewUrlParser : true,
     useUnifiedTopology : true,
     user: username,
