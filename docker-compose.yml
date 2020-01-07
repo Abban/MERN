@@ -13,7 +13,7 @@ services:
       context: ./
       dockerfile: .docker/api/Dockerfile
     volumes:
-      - './api:/app/api:delegated'
+      - './api:/app/api:consistent'
     ports:
       - '8055:8055'
     command: 'npm start'
@@ -33,9 +33,10 @@ services:
       context: ./
       dockerfile: .docker/web/Dockerfile
     volumes:
-      - ./web:/app/web
+      - './web:/app/web:consistent'
     ports:
-      - '8056:8056'
+      - '3000:3000'
+    command: 'npm start'
     environment:
       - NODE_ENV=development
       - VIRTUAL_HOST=${VHOST}

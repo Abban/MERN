@@ -86,11 +86,6 @@ export default class Block {
 
 export const BlockSchema = new Schema({
     _id : mongoose.Schema.Types.ObjectId,
-    composition : {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Composition'
-    },
-    order: Number,
     type: String,
     blockData: Object,
     created: {

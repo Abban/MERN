@@ -1,4 +1,5 @@
 import mongoose, {Schema} from 'mongoose';
+import {BlockSchema} from "./Block";
 
 export default class Composition {
 
@@ -76,11 +77,10 @@ export default class Composition {
 }
 
 export const CompositionSchema = new Schema({
-    _id : mongoose.Schema.Types.ObjectId,
     name: String,
     startSpeed: Number,
     startNotes: Array,
-    blocks : [{ type: Schema.Types.ObjectId, ref: 'Block' }],
+    blocks: [BlockSchema],
     created: {
         type: Date,
         default: Date.now()

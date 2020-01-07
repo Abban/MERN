@@ -10,4 +10,4 @@ RUN npm install
 COPY api /app/api/
 
 EXPOSE 8055
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
