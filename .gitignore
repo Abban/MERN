@@ -27,5 +27,3 @@ yarn-error.log*
 
 # Docker stuff
 /data
-.docker/database/*
-!.docker/database/README.md
