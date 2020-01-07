@@ -76,11 +76,19 @@ export default class Composition {
 }
 
 export const CompositionSchema = new Schema({
+    _id : mongoose.Schema.Types.ObjectId,
     name: String,
     startSpeed: Number,
     startNotes: Array,
-    created: Number,
-    updated: Number
+    blocks : [{ type: Schema.Types.ObjectId, ref: 'Block' }],
+    created: {
+        type: Date,
+        default: Date.now()
+    },
+    updated: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 export const CompositionModel = new mongoose.model('Composition', CompositionSchema);

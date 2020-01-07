@@ -6,8 +6,6 @@ const database = process.env.DB_DATABASE;
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 
-console.log('mongodb://' + host + ':' + port + '/' + database);
-
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://' + host + ':' + port + '/' + database, {
     useNewUrlParser : true,

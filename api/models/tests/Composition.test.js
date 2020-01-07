@@ -2,18 +2,17 @@ import Composition from '../Composition';
 
 test('Composition_onCreated_setsAndGets', () => {
     const startNotes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+
     const data = {
-        created: 0,
-        id: "EhY7ajWidJXe",
         name: "Composition 01",
         startNotes: startNotes,
         startSpeed: 10,
-        updated: 0
+        created: Date.now(),
+        updated: Date.now()
     };
 
     const composition = new Composition(data);
 
-    expect(composition.getId()).toBe(data.id);
     expect(composition.getName()).toBe(data.name);
     expect(composition.getStartNotes()).toBe(data.startNotes);
     expect(composition.getStartSpeed()).toBe(data.startSpeed);

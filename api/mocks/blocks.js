@@ -10,18 +10,18 @@ const block2Data = {
 
 const block1 = new Block({
     blockData: block1Data,
-    compositionId: "EhY7ajWidJXe",
-    created: 0,
+    composition: "EhY7ajWidJXe",
     type: "notes",
-    updated: 0
+    created: Date.now(),
+    updated: Date.now()
 });
 
 const block2 = new Block({
     blockData: block2Data,
-    compositionId: "EhY7ajWidJXe",
-    created: 0,
+    composition: "EhY7ajWidJXe",
     type: "notes",
-    updated: 0
+    created: Date.now(),
+    updated: Date.now()
 });
 
 export default [block1, block2]

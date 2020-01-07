@@ -2,7 +2,8 @@ import mongoose, { Schema } from 'mongoose';
 
 export default class Block {
 
-    _compositionId;
+    _composition;
+    _order;
     _type;
     _blockData;
     _created;
@@ -10,20 +11,23 @@ export default class Block {
 
 
     /**
-     * @param {string} compositionId
+     * @param {string} composition
      * @param {string} type
+     * @param {number} order
      * @param {object} blockData
      * @param {number} created
      * @param {number} updated
      */
     constructor({
-                    compositionId,
+                    composition,
+                    order,
                     type,
                     blockData,
                     created,
                     updated
                 }) {
-        this._compositionId = compositionId;
+        this._composition = composition;
+        this._order = order;
         this._type = type;
         this._blockData = blockData;
         this._created = created;
@@ -34,7 +38,13 @@ export default class Block {
     /**
      * @returns {string}
      */
-    getCompositionId = () => this._compositionId;
+    getComposition = () => this._composition;
+
+
+    /**
+     * @returns {number}
+     */
+    getOrder = () => this._order;
 
 
     /**
@@ -62,10 +72,11 @@ export default class Block {
 
     /**
      *
-     * @returns {{compositionId: string, created: number, type: string, updated: number, blockData: object}}
+     * @returns {{composition: string, created: number, order: number, type: string, updated: number, blockData: object}}
      */
     getData = () => ({
-        compositionId: this._compositionId,
+        composition: this._composition,
+        order: this._order,
         type: this._type,
         blockData: this._blockData,
         created: this._created,
@@ -74,10 +85,22 @@ export default class Block {
 }
 
 export const BlockSchema = new Schema({
+    _id : mongoose.Schema.Types.ObjectId,
+    composition : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Composition'
+    },
+    order: Number,
     type: String,
     blockData: Object,
-    created: Number,
-    updated: Number
+    created: {
+        type: Date,
+        default: Date.now()
+    },
+    updated: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 export const BlockModel = mongoose.model('Block', BlockSchema);
