@@ -14,6 +14,7 @@ services:
       dockerfile: .docker/api/Dockerfile
     volumes:
       - './api:/app/api:consistent'
+      - /app/api/node_modules/
     ports:
       - '8055:8055'
     command: 'npm start'
@@ -34,6 +35,7 @@ services:
       dockerfile: .docker/web/Dockerfile
     volumes:
       - './web:/app/web:consistent'
+      - /app/web/node_modules/
     ports:
       - '3000:3000'
     command: 'npm start'
@@ -63,4 +65,4 @@ services:
     command: mongod --logpath=/dev/null # --quiet
 
 volumes:
-  mongodb_data: # Also for persisting the DB
+  mongodb_data: # Shared volume also for persisting the DB

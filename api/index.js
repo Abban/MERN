@@ -2,6 +2,7 @@ import express, {request} from 'express';
 import bodyParser from "body-parser";
 import logger from './middleware/logger';
 import authentication from "./middleware/authentication";
+import MemberRoutes from './routes/members';
 import CompositionRoutes from './routes/compositions';
 require('./db');
 
@@ -12,6 +13,7 @@ app.use(authentication);
 app.use(logger);
 const port = process.env.PORT;
 
+MemberRoutes(app);
 CompositionRoutes(app);
 
 app.get('/', (request, response) => response.send('Hello World\n'));
