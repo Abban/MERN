@@ -17,7 +17,7 @@ services:
       - /app/api/node_modules/
     ports:
       - '8055:8055'
-    command: 'npm start'
+    command: sh -c "npm install && npm start"
     environment:
       - NODE_ENV=development
       - VIRTUAL_HOST=api.${VHOST}
@@ -26,6 +26,8 @@ services:
       - DB_DATABASE=${DB_DATABASE}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+      - ENCRYPT_SALT_ROUNDS=${ENCRYPT_SALT_ROUNDS}
     depends_on:
       - db
 
@@ -38,7 +40,7 @@ services:
       - /app/web/node_modules/
     ports:
       - '3000:3000'
-    command: 'npm start'
+    command: sh -c "npm install && npm start"
     environment:
       - NODE_ENV=development
       - VIRTUAL_HOST=${VHOST}

@@ -1,7 +1,20 @@
 import {MemberModel} from '../models/Member';
+import EncryptionService from '../services/EncryptionService';
 
 export default (app) => {
 
+    app.get('/v1/hash-test', async (request, response) => {
+
+        const [error, hash] = await EncryptionService.hash('Hash this');
+
+        if(error) {
+            console.log(error);
+            response.status(404).end();
+        }
+
+        console.log(hash);
+        response.send(hash);
+    });
 
     app.get('/v1/members', async (request, response) => {
         // Check admin

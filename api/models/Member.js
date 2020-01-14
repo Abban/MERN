@@ -1,5 +1,5 @@
 import mongoose, {Schema} from 'mongoose';
-import bcrypt from 'bcrypt';
+import EncryptionService from '../services/EncryptionService';
 
 export const MemberSchema = new Schema({
     role: {
@@ -26,16 +26,27 @@ export const MemberSchema = new Schema({
     updated: Date
 });
 
-MemberSchema.pre('save', (next) => {
+MemberSchema.pre('save', async (next) => {
 
     if(this.isNew) this.created = Date.now();
     this.updated = Date.now();
 
     if(this.isNew || this.isModified('password')) {
-        this.password = bcrypt.hashSync(this.password, 8);
-    }
+        const hash = await EncryptionService.hash('this is the data to hash');
 
-    next();
+        if(!hash) {
+
+        }
+
+        /*const hash = await EncryptionService.hash(this.password, (error, hash) => {
+            if(error) {
+                next(error);
+            } else {
+                this.password = hash;
+                next();
+            }
+        });*/
+    }
 });
 
 export const MemberModel = new mongoose.model('Member', MemberSchema);
