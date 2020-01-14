@@ -8,6 +8,14 @@ class EncryptionService {
         } catch (error) {
             return [error, null];
         }
+    };
+    matchPassword = async (password, hash) => {
+        try {
+            return await encryption.compare(password, hash);
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     }
 }
 
