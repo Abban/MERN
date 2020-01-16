@@ -82,6 +82,11 @@ MemberSchema.methods.authenticate = async () => {
     return token;
 };
 
+/**
+ * Generate an authorisation code for new accounts or reset passwords
+ * @param type
+ * @returns {Promise<string|boolean>}
+ */
 MemberSchema.methods.authCode = async (type) => {
     const code = crypto.randomBytes(6)
         .toString('hex')
@@ -100,6 +105,10 @@ MemberSchema.methods.authCode = async (type) => {
 
     this.save();
     return code;
+};
+
+MemberSchema.methods.register = async (data) => {
+
 };
 
 export const MemberModel = new mongoose.model('Member', MemberSchema);

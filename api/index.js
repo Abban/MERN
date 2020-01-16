@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import logger from './middleware/logger';
 import authentication from "./middleware/authentication";
 import MemberRoutes from './routes/members';
+import AuthenticationRoutes from './routes/authentication';
 import CompositionRoutes from './routes/compositions';
 require('./db');
 
@@ -13,6 +14,7 @@ app.use(authentication);
 app.use(logger);
 const port = process.env.PORT;
 
+AuthenticationRoutes(app);
 MemberRoutes(app);
 CompositionRoutes(app);
 
